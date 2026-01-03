@@ -111,6 +111,14 @@ namespace FootballManager.Repository
             }
             return player;
         }
+        /// <summary>
+        /// Prompts the user to enter a positive integer value using the specified message and reads the input from the
+        /// console.
+        /// </summary>
+        /// <remarks>The method continues to prompt the user until a valid non-negative integer is
+        /// entered. Input is read from the standard input stream.</remarks>
+        /// <param name="msg">The message to display to the user when prompting for input.</param>
+        /// <returns>The positive integer value entered by the user.</returns>
         protected int ReadPositiveInt(string msg)
         {
             while (true) {
