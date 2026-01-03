@@ -38,6 +38,7 @@ namespace FootballManager
                 { "16", new MenuAction("Show Player Stats", ()=> ShowPlayerGoals(playerRepo, goalRepository))  },
                 { "17", new MenuAction("Delete Coach",() => UpdateCoachField(coachRepository ,coachRepository.DeleteCoachByCoachId))},
                 { "18", new MenuAction("Delete Club", () => UpdateClubField(clubsRepository, clubsRepository.DeleteClubByClubId)) },
+                { "19", new MenuAction("Show best G/A Player", goalRepository.ShowBestGAPlayer)},
                 { "0", new MenuAction("Exit", () => Environment.Exit(0)) }
             };
 

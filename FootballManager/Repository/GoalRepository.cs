@@ -92,6 +92,7 @@ namespace FootballManager.Repository
         {
             var topAssistant = db.Goals
                 .Include(g => g.Player)
+                .Where(g => g.Assists > 0)
                 .OrderByDescending(g => g.Assists)
                 .FirstOrDefault();
 
@@ -102,7 +103,7 @@ namespace FootballManager.Repository
             }
             else
             {
-                Console.WriteLine($"Top Assistant: {topAssistant.Player?.Name} {topAssistant.Player?.Surname} with {topAssistant.ScoredGoals} assists.");
+                Console.WriteLine($"Top Assistant: {topAssistant.Player?.Name} {topAssistant.Player?.Surname} with {topAssistant.Assists} assists.");
             }
         }
         public void ShowPlayerGoals(int playerID)
@@ -118,6 +119,22 @@ namespace FootballManager.Repository
             else
             {
                 Console.WriteLine($"Player: {playerGoals.Player?.Name} {playerGoals.Player?.Surname} - Goals: {playerGoals.ScoredGoals}, Assists: {playerGoals.Assists}");
+            }
+        }
+        public void ShowBestGAPlayer()
+        {
+            var topGAPlayer = db.Goals
+                .Include(g => g.Player)
+                .OrderByDescending(g => g.ScoredGoals + g.Assists)
+                .FirstOrDefault();
+            if(topGAPlayer == null)
+            {
+                Console.WriteLine("No goals data available for this player.");
+                return;
+            }
+            else
+            {
+                Console.WriteLine($"Top Goals + Assists Player: {topGAPlayer.Player?.Name} {topGAPlayer.Player?.Surname} - Goals: {topGAPlayer.ScoredGoals}, Assists: {topGAPlayer.Assists}, Total: {topGAPlayer.ScoredGoals + topGAPlayer.Assists}");
             }
         }
     }
