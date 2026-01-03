@@ -15,7 +15,7 @@ namespace FootballManager.Repository
             Console.Write("Enter surname: ");
             string surname = Console.ReadLine() ?? "";
             Console.Write("Enter expirience years: ");
-            int.TryParse(Console.ReadLine(), out int years);
+            int years = ReadPositiveInt("expirience years");
 
             int? clubId = EnterClubId();
 

@@ -80,24 +80,24 @@ namespace FootballManager.Repository
             {
                 Console.WriteLine($"ID: {p.PositionId} | Name: {p.PositionName}");
             }
-        } 
+        }
         public static string ClubNameToDisplay(Player player)
         {
-            if(player.Club == null) {
+            if (player.Club == null) {
                 return "Free Agent";
             }
             return player.Club.ClubName;
         }
         public static string ClubNameToDisplay(Coach coach)
         {
-            if(coach.Club == null) {
+            if (coach.Club == null) {
                 return "Free Agent";
             }
             return coach.Club.ClubName;
         }
         public static string PositionNameToDisplay(Player player)
         {
-            if(player.Position == null) {
+            if (player.Position == null) {
                 return "N/A";
             }
             return player.Position.PositionName;
@@ -111,6 +111,16 @@ namespace FootballManager.Repository
             }
             return player;
         }
-
+        protected int ReadPositiveInt(string msg)
+        {
+            while (true) {
+                Console.WriteLine($"{msg}");
+                if (int.TryParse(Console.ReadLine(), out int value) && value >= 0)
+                {
+                    return value;
+                }
+                Console.WriteLine("Invalid input. Please enter a positive integer.");
+            }
+        } 
     }
 }

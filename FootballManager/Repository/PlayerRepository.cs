@@ -19,8 +19,7 @@ namespace FootballManager.Repository
 
             int? selectedPositionId = EnterPositionId();
 
-            Console.Write("Enter age: ");
-            int.TryParse(Console.ReadLine(), out int age);
+            int age = ReadPositiveInt("age:");
 
             var newPlayer = new Player
             {

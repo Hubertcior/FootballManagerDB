@@ -6,3 +6,5 @@ bin/
 obj/
 .vs/
 *.user
+*.db-shm
+*.db-wal
