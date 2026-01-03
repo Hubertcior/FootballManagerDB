@@ -1,0 +1,8 @@
+*.mdf
+*.ldf
+*.sqlite
+*.db
+bin/
+obj/
+.vs/
+*.user
