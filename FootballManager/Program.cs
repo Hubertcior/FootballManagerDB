@@ -126,17 +126,55 @@ namespace FootballManager
                     Console.WriteLine("Seeding default positions...");
 
                     var defaultPositions = new List<Position>
-                {
-                    new Position { PositionId = 1, PositionName = "Striker" },
-                    new Position { PositionId = 2, PositionName = "Midfielder" },
-                    new Position { PositionId = 3, PositionName = "Defender" },
-                    new Position { PositionId = 4, PositionName = "Goalkeeper" }
-                };
+                    {
+                        new() { PositionId = 1, PositionName = "Striker" },
+                        new() { PositionId = 2, PositionName = "Midfielder" },
+                        new() { PositionId = 3, PositionName = "Defender" },
+                        new() { PositionId = 4, PositionName = "Goalkeeper" }
+                    };
 
                     db.Positions.AddRange(defaultPositions);
-                    db.SaveChanges();
                     Console.WriteLine("Positions initialized!");
                 }
+                if (!db.Clubs.Any())
+                {
+                    Console.WriteLine("Seeding default clubs...");
+                    var defaultClubs = new List<Club>
+                    {
+                        new() { ClubName = "Real Madrid", DateOfEstablishment = 1902 },
+                        new() { ClubName = "Manchester United", DateOfEstablishment = 1878 },
+                        new() { ClubName = "Paris Saint-Germain",DateOfEstablishment = 1970 },
+                        new() { ClubName = "Liverpool", DateOfEstablishment = 1892 },
+                    };
+                    db.Clubs.AddRange(defaultClubs);
+                    Console.WriteLine("Clubs initialized!");
+                }
+                if (!db.Players.Any())
+                {
+                    Console.WriteLine("Seeding default players...");
+                    var defaultPlayers = new List<Player>
+                    {
+                        new() { Name = "Vini", Surname = "Junior", Age = 36, PositionId = 1, ClubId = 1 },
+                        new() { Name = "Cristiano", Surname = "Ronaldo", Age = 39, PositionId = 1, ClubId = 1 },
+                        new() { Name = "Neymar", Surname = "Jr", Age = 31, PositionId = 1 },
+                        new() { Name = "Luka", Surname = "Modric", Age = 38, PositionId = 2, ClubId = 2 },
+                        new() { Name = "Sergio", Surname = "Ramos", Age = 37, PositionId = 3, ClubId =3 },
+                    };
+                    db.Players.AddRange(defaultPlayers);
+                    Console.WriteLine("Players initialized!");
+                }
+                if (!db.Coaches.Any())
+                {
+                    Console.WriteLine("Seeding default coaches...");
+                    var defaultCoaches = new List<Coach>
+                    {
+                        new() { FirstName = "Carlo", Surname = "Ancelotti", ExperienceYears = 40, ClubId = 1 },
+                        new() { FirstName = "Erik", Surname = "Ten Hag", ExperienceYears = 20, ClubId = 2 },
+                    };
+                    db.Coaches.AddRange(defaultCoaches);
+                    Console.WriteLine("Coaches initialized!");
+                }
+                db.SaveChanges();
             }
             static void WaitForKey()
             {
