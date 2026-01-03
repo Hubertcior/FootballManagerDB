@@ -4,7 +4,7 @@ using FootballManager.Model;
 
 namespace FootballManager.Repository
 {
-    internal class ClubsRepository(Context db)
+    internal class ClubsRepository(Context db) : BaseRepository(db)
     {
         public void AddClub()
         {
@@ -12,8 +12,7 @@ namespace FootballManager.Repository
             Console.Write("Enter name: ");
             string name = Console.ReadLine() ?? "";
 
-            Console.Write("Enter Date of Established: ");
-            int.TryParse(Console.ReadLine(), out int dateOfEstablished);
+            int dateOfEstablished = ReadPositiveInt("Date of Established");
 
             Club club = new Club
             {

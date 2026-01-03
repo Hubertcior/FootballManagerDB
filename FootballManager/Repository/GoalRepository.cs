@@ -15,21 +15,19 @@ namespace FootballManager.Repository
             if (player != null)
             {
                 Console.WriteLine("Enter number of goals scored:");
-                if (int.TryParse(Console.ReadLine(), out int newGoals))
-                { 
-                    if (player.Goals == null)
-                    {
-                        player.Goals = new Goals { PlayerId = player.Id, ScoredGoals = newGoals };
-                        db.Goals.Add(player.Goals);
-                    }
-                    else
-                    {
-                        player.Goals.ScoredGoals = newGoals;
-                    }
-
-                    db.SaveChanges();
-                    Console.WriteLine("Goals updated successfully!");
+                int newGoals = ReadPositiveInt("Number of goals scored: ");
+                if (player.Goals == null)
+                {
+                    player.Goals = new Goals { PlayerId = player.Id, ScoredGoals = newGoals };
+                    db.Goals.Add(player.Goals);
                 }
+                else
+                {
+                    player.Goals.ScoredGoals = newGoals;
+                }
+
+                db.SaveChanges();
+                Console.WriteLine("Goals updated successfully!");
             }
             else
             {
@@ -47,21 +45,20 @@ namespace FootballManager.Repository
             if (player != null)
             {
                 Console.WriteLine("Enter number of assists delivered:");
-                if (int.TryParse(Console.ReadLine(), out int newAsist))
+                int newAsist = ReadPositiveInt("Number of assists delivered: ");
+                if (player.Goals == null)
                 {
-                    if (player.Goals == null)
-                    {
-                        player.Goals = new Goals { PlayerId = player.Id, Assists = newAsist};
-                        db.Goals.Add(player.Goals);
-                    }
-                    else
-                    {
-                        player.Goals.Assists = newAsist;
-                    }
-
-                    db.SaveChanges();
-                    Console.WriteLine("Asists updated successfully!");
+                    player.Goals = new Goals { PlayerId = player.Id, Assists = newAsist };
+                    db.Goals.Add(player.Goals);
                 }
+                else
+                {
+                    player.Goals.Assists = newAsist;
+                }
+
+                db.SaveChanges();
+                Console.WriteLine("Asists updated successfully!");
+
             }
             else
             {
@@ -127,7 +124,7 @@ namespace FootballManager.Repository
                 .Include(g => g.Player)
                 .OrderByDescending(g => g.ScoredGoals + g.Assists)
                 .FirstOrDefault();
-            if(topGAPlayer == null)
+            if (topGAPlayer == null)
             {
                 Console.WriteLine("No goals data available for this player.");
                 return;

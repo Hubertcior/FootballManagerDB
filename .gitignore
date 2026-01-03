@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/FootballManager/liga.db-shm
+/FootballManager/liga.db-wal
