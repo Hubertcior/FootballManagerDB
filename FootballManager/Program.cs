@@ -1,6 +1,7 @@
 ﻿using FootballManager.Data;
 using FootballManager.Model;
 using FootballManager.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace FootballManager
 {
@@ -10,6 +11,7 @@ namespace FootballManager
         {
             using (var db = new Context())
             {
+                db.Database.Migrate();
                 SeedDatabase(db);
                 PlayerRepository playerRepo = new PlayerRepository(db);
                 ClubsRepository clubsRepository = new ClubsRepository(db);
