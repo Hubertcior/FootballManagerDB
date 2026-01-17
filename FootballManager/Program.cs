@@ -65,7 +65,7 @@ namespace FootballManager
                         Console.WriteLine(line);
                     }
 
-                    Console.Write("\nSelect option: ");
+                    Console.WriteLine("Select option: ");
                     string choice = Console.ReadLine() ?? "";
 
                     if (actions.TryGetValue(choice, out var menuAction))
@@ -178,7 +178,7 @@ namespace FootballManager
             }
             static void WaitForKey()
             {
-                Console.WriteLine("\nPress any key to continue...");
+                Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
         }

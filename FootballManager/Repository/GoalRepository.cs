@@ -14,7 +14,6 @@ namespace FootballManager.Repository
                 .FirstOrDefault(p => p.Id == playerID);
             if (player != null)
             {
-                Console.WriteLine("Enter number of goals scored:");
                 int newGoals = ReadPositiveInt("Number of goals scored: ");
                 if (player.Goals == null)
                 {

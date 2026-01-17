@@ -49,7 +49,7 @@ namespace FootballManager.Repository
         }
         public void ShowAllPositions()
         {
-            Console.WriteLine("\nAvailable Positions:");
+            Console.WriteLine("Available Positions:");
             var positions = db.Positions.ToList();
             foreach (var p in positions)
             {

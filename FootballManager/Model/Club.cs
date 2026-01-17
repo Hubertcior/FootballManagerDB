@@ -8,7 +8,6 @@ namespace FootballManager.Model
         public int ClubId {  get; set; }
         public required string ClubName { get; set; }
         public required int DateOfEstablishment { get; set; }
-
         public List<Player> Players { get; set; } = [];
         public Coach? Coach { get; set; }
     }
